@@ -1,0 +1,9 @@
+/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/serde_path_to_error-584e9067dbf93f6d.d: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/de.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/path.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/ser.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/wrap.rs
+
+/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/libserde_path_to_error-584e9067dbf93f6d.rmeta: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/de.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/path.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/ser.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/wrap.rs
+
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/lib.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/de.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/path.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/ser.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_path_to_error-0.1.20/src/wrap.rs:

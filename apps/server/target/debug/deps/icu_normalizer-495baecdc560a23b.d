@@ -1,0 +1,10 @@
+/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/icu_normalizer-495baecdc560a23b.d: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/properties.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/provider.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/uts46.rs
+
+/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/libicu_normalizer-495baecdc560a23b.rlib: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/properties.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/provider.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/uts46.rs
+
+/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/libicu_normalizer-495baecdc560a23b.rmeta: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/properties.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/provider.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/uts46.rs
+
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/lib.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/properties.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/provider.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/icu_normalizer-2.2.0/src/uts46.rs:

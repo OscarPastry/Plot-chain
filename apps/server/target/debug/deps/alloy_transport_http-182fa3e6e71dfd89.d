@@ -1,0 +1,8 @@
+/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/alloy_transport_http-182fa3e6e71dfd89.d: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-transport-http-1.8.3/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-transport-http-1.8.3/src/reqwest_transport.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-transport-http-1.8.3/src/layers/mod.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-transport-http-1.8.3/src/../README.md
+
+/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/liballoy_transport_http-182fa3e6e71dfd89.rmeta: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-transport-http-1.8.3/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-transport-http-1.8.3/src/reqwest_transport.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-transport-http-1.8.3/src/layers/mod.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-transport-http-1.8.3/src/../README.md
+
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-transport-http-1.8.3/src/lib.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-transport-http-1.8.3/src/reqwest_transport.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-transport-http-1.8.3/src/layers/mod.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-transport-http-1.8.3/src/../README.md:

@@ -1,0 +1,11 @@
+/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/socket2-ad2d3404a6a9b968.d: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/sockaddr.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/socket.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/sockref.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/sys/unix.rs
+
+/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/libsocket2-ad2d3404a6a9b968.rlib: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/sockaddr.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/socket.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/sockref.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/sys/unix.rs
+
+/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/libsocket2-ad2d3404a6a9b968.rmeta: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/sockaddr.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/socket.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/sockref.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/sys/unix.rs
+
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/lib.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/sockaddr.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/socket.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/sockref.rs:
+/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/socket2-0.6.3/src/sys/unix.rs:
