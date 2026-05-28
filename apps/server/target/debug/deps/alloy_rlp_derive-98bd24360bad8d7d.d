@@ -1,9 +1,0 @@
-/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/alloy_rlp_derive-98bd24360bad8d7d.d: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/de.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/en.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/utils.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/../README.md
-
-/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/liballoy_rlp_derive-98bd24360bad8d7d.so: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/de.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/en.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/utils.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/../README.md
-
-/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/lib.rs:
-/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/de.rs:
-/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/en.rs:
-/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/utils.rs:
-/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-rlp-derive-0.3.15/src/../README.md:

@@ -1,9 +1,0 @@
-/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/alloy_chains-1102c09084493061.d: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/chain.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/named.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/spec.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/../README.md
-
-/home/oscarpastry/Documents/Coding Project/Plot-chain/apps/server/target/debug/deps/liballoy_chains-1102c09084493061.rmeta: /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/lib.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/chain.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/named.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/spec.rs /home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/../README.md
-
-/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/lib.rs:
-/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/chain.rs:
-/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/named.rs:
-/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/spec.rs:
-/home/oscarpastry/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/alloy-chains-0.2.34/src/../README.md:
