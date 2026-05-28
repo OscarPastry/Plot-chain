@@ -39,4 +39,4 @@ coverage/
 # Docker
 docker-data/
 
-/target/
+*/target/
