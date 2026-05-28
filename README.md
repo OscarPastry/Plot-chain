@@ -1,6 +1,6 @@
 # Plot-Chain — Skeleton Project Plan
 
-Scaffold a monorepo skeleton that covers all three pillars from the idea doc: **Frontend (Next.js)**, **Backend (Express/Node)**, and **Blockchain (Hardhat/Solidity)**. Everything is wired together with shared config so you can `npm install` from the root and start developing immediately.
+Scaffold a monorepo skeleton that covers all three pillars from the idea doc: **Frontend (Next.js)**, **Backend (Rust)**, and **Blockchain (Hardhat/Solidity)**. Everything is wired together with shared config so you can `npm install` from the root and start developing immediately.
 
 ## Project Structure
 
