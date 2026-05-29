@@ -43,5 +43,3 @@ apps/server/target/
 apps/server/.env
 apps/server/.env.local
 apps/server/cargo.lock
-
-apps/.env
