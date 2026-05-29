@@ -1,154 +1,263 @@
-# Plot-Chain — Skeleton Project Plan
+# Plot-Chain
 
-Scaffold a monorepo skeleton that covers all three pillars from the idea doc: **Frontend (Next.js)**, **Backend (Rust)**, and **Blockchain (Hardhat/Solidity)**. Everything is wired together with shared config so you can `npm install` from the root and start developing immediately.
+> *Every square centimeter of earth, immutably owned.*
 
-## Project Structure
+A blockchain-based land registry with centimeter-level geospatial precision. Land parcels are stored as polygon geometry in PostgreSQL/PostGIS, verified on-chain as ERC-721 NFTs, and managed through a Rust API backend.
+
+---
+
+## Architecture
+
+```mermaid
+graph TD
+    A[Next.js Frontend]:::accent0 --> B[Rust API - Axum]:::accent1
+    B --> C[PostgreSQL + PostGIS]:::accent2
+    B --> D[Redis]:::accent3
+    B --> E[Polygon Network]:::accent4
+    E --> F[LandRegistry.sol]:::accent5
+    E --> G[LandNFT.sol ERC-721]:::accent6
+```
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | Next.js 16, React 19, Tailwind CSS v4 |
+| Backend | Rust, Axum, SQLx, Tokio |
+| Database | PostgreSQL 16 + PostGIS |
+| Cache | Redis 7 |
+| Blockchain | Solidity 0.8.27, Hardhat, OpenZeppelin |
+| Chain | Polygon (Mumbai testnet) |
+
+---
+
+## Monorepo Structure
 
 ```
 Plot-chain/
-├── README.md                          # Project overview & quickstart
-├── package.json                       # Root monorepo (npm workspaces)
-├── .env.example                       # Shared env template
-├── .gitignore
-├── docker-compose.yml                 # PostgreSQL+PostGIS + Redis
-│
 ├── apps/
-│   ├── web/                           # Next.js 15 frontend
-│   │   ├── package.json
-│   │   ├── next.config.js
-│   │   ├── tailwind.config.js
-│   │   ├── postcss.config.js
-│   │   ├── tsconfig.json
-│   │   ├── public/
-│   │   ├── src/
-│   │   │   ├── app/
-│   │   │   │   ├── layout.tsx         # Root layout (fonts, providers)
-│   │   │   │   ├── page.tsx           # Landing / Map page
-│   │   │   │   ├── globals.css
-│   │   │   │   ├── dashboard/
-│   │   │   │   │   └── page.tsx       # Government dashboard stub
-│   │   │   │   └── registry/
-│   │   │   │       └── page.tsx       # Land registry page stub
-│   │   │   ├── components/
-│   │   │   │   ├── Map.tsx            # Mapbox/Leaflet wrapper
-│   │   │   │   ├── Navbar.tsx         # Top navigation
-│   │   │   │   ├── ParcelCard.tsx     # Land parcel info card
-│   │   │   │   └── WalletConnect.tsx  # Wallet connection button
-│   │   │   ├── lib/
-│   │   │   │   ├── web3.ts            # ethers.js provider setup
-│   │   │   │   ├── geohash.ts         # GeoHash utilities
-│   │   │   │   └── api.ts            # Backend API client
-│   │   │   └── store/
-│   │   │       └── useStore.ts        # Zustand store
-│   │   └── .env.local.example
+│   ├── web/                     # Next.js 16 frontend
+│   │   ├── src/app/
+│   │   │   ├── page.tsx         # Landing / map view
+│   │   │   ├── registry/        # Parcel registration page
+│   │   │   └── dashboard/       # Government dashboard
+│   │   ├── src/components/
+│   │   │   ├── Map.tsx          # Mapbox GL JS wrapper
+│   │   │   ├── Navbar.tsx
+│   │   │   ├── ParcelCard.tsx
+│   │   │   └── WalletConnect.tsx
+│   │   └── src/lib/
+│   │       ├── api.ts           # Backend API client
+│   │       ├── web3.ts          # ethers.js provider
+│   │       └── geohash.ts       # GeoHash utilities
 │   │
-│   └── server/                        # Express.js backend API
-│       ├── package.json
-│       ├── tsconfig.json
-│       ├── src/
-│       │   ├── index.ts               # Entry point, Express app setup
-│       │   ├── config/
-│       │   │   └── index.ts           # Environment config loader
-│       │   ├── routes/
-│       │   │   ├── index.ts           # Route aggregator
-│       │   │   ├── parcel.routes.ts   # Land parcel CRUD routes
-│       │   │   ├── registry.routes.ts # Registry operations
-│       │   │   └── health.routes.ts   # Health check
-│       │   ├── controllers/
-│       │   │   ├── parcel.controller.ts
-│       │   │   └── registry.controller.ts
-│       │   ├── services/
-│       │   │   ├── parcel.service.ts
-│       │   │   ├── blockchain.service.ts  # Contract interaction
-│       │   │   └── geospatial.service.ts  # PostGIS queries
-│       │   ├── models/
-│       │   │   └── parcel.model.ts     # Parcel schema/type
-│       │   ├── middleware/
-│       │   │   ├── auth.middleware.ts
-│       │   │   └── error.middleware.ts
-│       │   └── utils/
-│       │       └── geohash.ts          # GeoHash helper
-│       └── .env.example
+│   └── server/                  # Rust backend (Axum)
+│       ├── Cargo.toml
+│       └── src/
+│           ├── main.rs          # Server entry point
+│           ├── config.rs        # Env config
+│           ├── app_state.rs     # Shared state (config + DB pool)
+│           ├── error.rs         # AppErr + IntoResponse
+│           ├── routes/
+│           │   ├── mod.rs       # Router aggregator
+│           │   ├── health.rs    # GET /api/health
+│           │   ├── parcels.rs   # Parcel CRUD routes
+│           │   └── registry.rs  # Verify + history routes
+│           ├── models/
+│           │   ├── parcels.rs   # ParcelResponse, CreateParcelRequest
+│           │   └── registry.rs  # VerifyParcelResponse, RegistryHistoryResponse
+│           └── db/
+│               ├── mod.rs       # PgPool connection
+│               └── parcels.rs   # SQLx query layer
 │
-├── packages/
-│   └── contracts/                     # Hardhat + Solidity
-│       ├── package.json
-│       ├── hardhat.config.ts
-│       ├── tsconfig.json
-│       ├── contracts/
-│       │   ├── LandRegistry.sol       # Main registry contract
-│       │   └── LandNFT.sol            # ERC-721 land parcel NFT
-│       ├── scripts/
-│       │   └── deploy.ts              # Deployment script
-│       └── test/
-│           └── LandRegistry.test.ts   # Basic contract tests
-│
-└── blockchain_land_registry_idea.md.resolved   # (existing)
+└── packages/
+    └── contracts/               # Hardhat + Solidity
+        ├── contracts/
+        │   ├── LandRegistry.sol # Registration, approval, rejection flow
+        │   └── LandNFT.sol      # ERC-721 land parcel token
+        ├── scripts/
+        │   └── deploy.ts        # Deploy + transfer ownership script
+        └── test/
+            └── LandRegistry.test.ts
 ```
 
-## Proposed Changes
+---
 
-### Root Monorepo Setup
+## Getting Started
 
-Root `package.json` with npm workspaces pointing to `apps/*` and `packages/*`. Shared `.gitignore`, `.env.example`, and a `docker-compose.yml` to spin up PostgreSQL+PostGIS and Redis.
+### Prerequisites
 
-#### [NEW] [package.json](file:///home/Rishi/Documents/coding_Projects/Plot-chain/package.json)
-Root monorepo config with npm workspaces and convenience scripts (`dev`, `build`, `dev:web`, `dev:server`, `dev:chain`).
+- Node.js >= 18
+- Rust (stable)
+- Docker
+- `cargo-watch` (optional, for hot reload)
 
-#### [NEW] [.gitignore](file:///home/Rishi/Documents/coding_Projects/Plot-chain/.gitignore)
-Standard ignores for Node, Next.js, Hardhat, environment files.
+### 1. Install dependencies
 
-#### [NEW] [.env.example](file:///home/Rishi/Documents/coding_Projects/Plot-chain/.env.example)
-Template for all shared env vars (DB, Redis, blockchain RPC, Mapbox token, etc.).
+```bash
+npm install
+```
 
-#### [NEW] [docker-compose.yml](file:///home/Rishi/Documents/coding_Projects/Plot-chain/docker-compose.yml)
-PostgreSQL 16 with PostGIS extension + Redis 7.
+### 2. Start infrastructure
+
+```bash
+docker compose up -d
+```
+
+This starts:
+- PostgreSQL 16 + PostGIS on port `5432`
+- Redis 7 on port `6379`
+
+### 3. Set up environment variables
+
+Copy and fill in the `.env.example` at the repo root:
+
+```bash
+cp .env.example .env
+```
+
+Minimum required:
+
+```env
+DATABASE_URL=postgresql://plotchain:plotchain@localhost:5432/plotchain
+REDIS_URL=redis://localhost:6379
+POLYGON_RPC_URL=https://rpc-mumbai.maticvigil.com
+JWT_SECRET=dev-secret-change-me
+```
+
+### 4. Run the backend
+
+```bash
+npm run dev:server
+# or directly:
+cargo run --manifest-path apps/server/Cargo.toml
+```
+
+Server starts on `http://localhost:4000`.
+
+### 5. Run the frontend
+
+```bash
+npm run dev:web
+```
+
+Frontend starts on `http://localhost:3000`.
 
 ---
 
-### Next.js Frontend (`apps/web`)
+## API Endpoints
 
-Initialized via `npx create-next-app` with TypeScript, Tailwind, App Router. Then stub components and pages are added.
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/api/health` | Health check |
+| `GET` | `/api/parcels` | List all parcels |
+| `GET` | `/api/parcels/:id` | Get parcel by UUID |
+| `POST` | `/api/parcels` | Create a new parcel |
+| `POST` | `/api/parcels/:id/transfer` | Transfer parcel ownership |
+| `GET` | `/api/registry/verify/:id` | Verify parcel on-chain |
+| `GET` | `/api/registry/history/:id` | Get ownership transfer history |
 
-#### [NEW] `apps/web/` — Full Next.js app
-Key files: `layout.tsx`, `page.tsx` (map landing), `dashboard/page.tsx`, `registry/page.tsx`, plus component stubs (`Map.tsx`, `Navbar.tsx`, `ParcelCard.tsx`, `WalletConnect.tsx`), lib helpers (`web3.ts`, `geohash.ts`, `api.ts`), and Zustand store.
+### Example: Create a parcel
 
----
-
-### Express Backend (`apps/server`)
-
-A TypeScript Express API with layered architecture (routes → controllers → services).
-
-#### [NEW] `apps/server/` — Full Express API
-Key files: entry point (`index.ts`), config loader, route files for parcels/registry/health, controller stubs, service stubs (parcel, blockchain interaction, geospatial/PostGIS), middleware (auth, error handling), and geohash utility.
-
----
-
-### Hardhat Contracts (`packages/contracts`)
-
-Solidity smart contracts with Hardhat tooling.
-
-#### [NEW] `packages/contracts/` — Full Hardhat project
-Key files: `LandRegistry.sol` (main registry), `LandNFT.sol` (ERC-721), deploy script, and a basic test.
-
----
-
-### README
-
-#### [NEW] [README.md](file:///home/Rishi/Documents/coding_Projects/Plot-chain/README.md)
-Project overview, architecture diagram, tech stack summary, getting started guide, available scripts.
+```bash
+curl -X POST http://localhost:4000/api/parcels \
+  -H "Content-Type: application/json" \
+  -d '{
+    "polygon": [[77.5946,12.9716],[77.5950,12.9716],[77.5950,12.9720]],
+    "location": "Koramangala, Bengaluru",
+    "ownerAddress": "0x742d35Cc6634C0532925a3b844Bc9e7595f2bD28"
+  }'
+```
 
 ---
 
-## Verification Plan
+## Smart Contracts
 
-### Automated Tests
-1. **Smart contract tests:** `cd packages/contracts && npx hardhat test` — must compile contracts and pass the basic test.
-2. **Frontend build:** `cd apps/web && npm run build` — must compile without TypeScript errors.
-3. **Backend compilation:** `cd apps/server && npx tsc --noEmit` — must pass type-checking.
+### LandRegistry.sol
 
-### Manual Verification
-1. Run `npm install` from the project root — should install all workspace dependencies.
-2. Run `npm run dev:web` — Next.js dev server should start on port 3000.
-3. Run `npm run dev:server` — Express dev server should start on port 4000.
-4. Run `docker-compose up -d` — PostgreSQL and Redis containers should come up (requires Docker; optional for skeleton check).
+Manages the parcel registration approval flow.
+
+- `submitRegistration(metadataUri, geohashes)` — applicant submits
+- `approveRegistration(regId)` — validator approves, triggers NFT mint
+- `rejectRegistration(regId)` — validator rejects
+
+Registration statuses: `Pending → Approved / Rejected / Disputed`
+
+### LandNFT.sol
+
+ERC-721 token representing a land parcel.
+
+- One token per approved parcel
+- Metadata URI points to IPFS (GeoJSON polygon + geohash cells)
+- `getParcelGeohashes(tokenId)` — returns geohash array
+
+### Deploy contracts
+
+```bash
+# Start local chain
+npm run dev:chain
+
+# Deploy to local
+npm run deploy:contracts
+
+# Compile only
+npm run compile:contracts
+
+# Run tests
+npm run test:contracts
+```
+
+---
+
+## Available Scripts
+
+From the repo root:
+
+| Script | Description |
+|--------|-------------|
+| `npm run dev:web` | Start Next.js frontend |
+| `npm run dev:server` | Start Rust API server |
+| `npm run dev:chain` | Start local Hardhat node |
+| `npm run build:web` | Build frontend |
+| `npm run build:server` | Build Rust server |
+| `npm run compile:contracts` | Compile Solidity contracts |
+| `npm run test:contracts` | Run contract tests |
+| `npm run deploy:contracts` | Deploy contracts to localhost |
+
+---
+
+## Current Status
+
+### ✅ Done
+- Monorepo structure (npm workspaces)
+- Rust backend: Axum server, modular routes, app state, config, error handling
+- Rust backend: all API routes wired and compiling
+- Rust backend: SQLx DB query layer (`list`, `get_by_id`, `create`)
+- Docker infra: PostgreSQL + PostGIS + Redis
+- Smart contracts: `LandRegistry.sol` and `LandNFT.sol` implemented
+- Smart contract tests: full registration flow coverage
+- Frontend: page/component scaffold (map, dashboard, registry)
+- Frontend: API client matching backend contract
+
+### 🚧 In Progress
+- DB migrations (first `parcels` table migration not yet applied)
+- PostGIS geometry column (currently storing polygon as JSONB)
+- Map integration (Mapbox GL JS placeholder)
+- Wallet connect (ethers.js stub)
+- Geohash polygon fill implementation
+
+### 📋 Planned
+- PostGIS overlap detection (`ST_Intersects`)
+- Area calculation (`ST_Area`)
+- Blockchain service integration from Rust backend (`alloy`)
+- Auth middleware (JWT / wallet-signature)
+- Government dashboard actions wired to contracts
+- IPFS/Pinata metadata upload for NFT URI
+
+---
+
+## License
+
+MIT
