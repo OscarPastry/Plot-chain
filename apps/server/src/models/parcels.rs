@@ -14,7 +14,7 @@ pub struct ParcelResponse {
     pub id: String,
     pub owner: String,
     pub polygon: Vec<[f64; 2]>,
-    pub geohashes: Vec<string>,
+    pub geohashes: Vec<String>,
     pub area: f64,
     pub location: String,
     pub status: ParcelStatus,
@@ -27,11 +27,11 @@ pub struct ParcelResponse {
 pub struct CreateParcelRequest {
     pub polygon: Vec<[f64; 2]>,
     pub location: String,
-    pub owner_addr: String,
+    pub owner_address: String,
 }
 
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct TransferParcelReq {
-    pub new_owner_addr: String,
+pub struct TransferParcelRequest {
+    pub new_owner_address: String,
 }

@@ -8,16 +8,22 @@ mod error;
 mod app_state;
 //app_state → defines the shared application state that can be accessed across different parts of the server, such as configuration settings or database connections
 //
-use axum::{Json, Router, extract::State, routing::get};
+mod models;
+//models → defines the data structures used in the application, such as request and response formats for the API endpoints, allowing us to organize and manage the data used in the server in a structured way
+//
+mod routes;
+//routes → defines the different API endpoints and their corresponding request handlers, organizing the server's functionality into modular components
+//
+//use axum::{Json, Router, extract::State, routing::get};
 //Router → defines routes/endpoints
 //routing::get → specifies a GET request handler
 //Json → converts Rust structs into JSON responses
 //extract::State → allows us to access shared application state within request handlers
 //
-use serde::Serialize;
+//use serde::Serialize;
 // Serialize → allows us to convert Rust structs into JSON format for API responses
 //
-use std::net::SocketAddr;
+//use std::net::SocketAddr;
 // SocketAddr → represents an IP address and port combination for the server to listen on
 //
 use tower_http::{cors::CorsLayer, trace::TraceLayer};
@@ -30,22 +36,6 @@ use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 use crate::app_state::AppState;
 use crate::config::Config;
 
-#[derive(Serialize)]
-//automatically generates code to convert the struct into JSON.
-struct HealthResponse {
-    status: &'static str,
-    service: &'static str,
-    timestamp: String,
-}
-
-async fn health() -> Json<HealthResponse> {
-    Json(HealthResponse {
-        status: "ok",
-        service: "Plot-chain-api",
-        timestamp: chrono::Utc::now().to_rfc3339(),
-    })
-}
-
 #[tokio::main]
 //This macro:
 //1.creates the async runtime
@@ -57,13 +47,15 @@ async fn main() -> anyhow::Result<()> {
         .init();
     let config = Config::from_env()?;
     let app_state = AppState::new(config.clone());
-    let app = Router::new() // Creates a new Axum router
-        .route("/api/health", get(health))
+    let app = routes::create_router() // Creates a new Axum router
         .layer(CorsLayer::permissive()) // Allows request from any origin
         .layer(TraceLayer::new_for_http())
         .with_state(app_state); // Adds shared application state to the router
     let addr = config.address();
     let listener = tokio::net::TcpListener::bind(&addr).await?;
+
+    tracing::info!("{} is running on http://{}", config.service_name, addr);
+
     axum::serve(listener, app).await?;
     Ok(())
 }

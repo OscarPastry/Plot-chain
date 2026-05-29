@@ -1,2 +1,2 @@
-pub mod parcel;
+pub mod parcels;
 pub mod registry;

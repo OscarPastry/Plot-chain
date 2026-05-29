@@ -5,7 +5,7 @@ use serde::Serialize;
 pub struct VerifyParcelResponse {
     pub valid: bool,
     pub message: String,
-    pub parcel_id: string,
+    pub parcel_id: String,
 }
 
 #[derive(Debug, Serialize, Clone)]
@@ -19,7 +19,7 @@ pub struct TransferRecord {
 #[derive(Debug, Serialize, Clone)]
 #[serde(rename_all = "camelCase")]
 pub struct RegistryHistoryResponse {
-    pub parcels_id: String,
+    pub parcel_id: String,
     pub transfer_records: Vec<TransferRecord>,
     pub message: String,
 }

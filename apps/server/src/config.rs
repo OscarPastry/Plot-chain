@@ -22,7 +22,7 @@ impl Config {
         let host = env::var("HOST").unwrap_or_else(|_| "127.0.0.1".to_string()); // If HOST is not set, it defaults to "
 
         let port = env::var("PORT")
-            .unwrap_or_else(|_| "8080".to_string()) // If PORT is not set, it defaults to "8080"
+            .unwrap_or_else(|_| "4000".to_string()) // If PORT is not set, it defaults to "8080"
             .parse::<u16>() // Convert the string to a u16
             .context("Failed to parse PORT as u16")?; // Provide context if parsing fails
 
