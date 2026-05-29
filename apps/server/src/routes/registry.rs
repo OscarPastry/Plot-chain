@@ -7,11 +7,11 @@ use chrono::Utc;
 
 use crate::{
     app_state::AppState,
-    error::AppError,
+    error::AppErr,
     models::registry::{RegistryHistoryResponse, TransferRecord, VerifyParcelResponse},
 };
 
-pub fn route() -> Router<AppState> {
+pub fn router() -> Router<AppState> {
     Router::new()
         .route("/verify/{id}", get(verify_parcel))
         .route("/history/{id}", get(parcel_history))
@@ -20,7 +20,7 @@ pub fn route() -> Router<AppState> {
 async fn verify_parcel(
     Path(id): Path<String>,
     State(_state): State<AppState>,
-) -> Result<Json<VerifyParcelResponse>, AppError> {
+) -> Result<Json<VerifyParcelResponse>, AppErr> {
     if id.trim().is_empty() {
         return Err(AppErr::BadRequest("Parcel ID cannot be empty".to_string()));
     }
@@ -35,9 +35,9 @@ async fn verify_parcel(
 async fn parcel_history(
     Path(id): Path<String>,
     State(_state): State<AppState>,
-) -> Result<Json<RegistryHistoryResponse>, AppError> {
+) -> Result<Json<RegistryHistoryResponse>, AppErr> {
     if id.trim().is_empty() {
-        return Err(AppError::BadRequest("parcel id is required".to_string()));
+        return Err(AppErr::BadRequest("parcel id is required".to_string()));
     }
 
     let transfers = vec![
@@ -55,7 +55,7 @@ async fn parcel_history(
 
     Ok(Json(RegistryHistoryResponse {
         parcel_id: id,
-        transfers,
+        transfer_records: transfers,
         message: "Parcel history is currently using placeholder data".to_string(),
     }))
 }
