@@ -33,5 +33,5 @@ pub struct CreateParcelRequest {
 #[derive(Debug, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct TransferParcelRequest {
-    pub new_owner_address: String,
+    pub new_owner: String,
 }

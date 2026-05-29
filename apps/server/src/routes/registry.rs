@@ -3,7 +3,6 @@ use axum::{
     extract::{Path, State},
     routing::get,
 };
-use chrono::Utc;
 
 use crate::{
     app_state::AppState,
@@ -22,13 +21,14 @@ async fn verify_parcel(
     State(_state): State<AppState>,
 ) -> Result<Json<VerifyParcelResponse>, AppErr> {
     if id.trim().is_empty() {
-        return Err(AppErr::BadRequest("Parcel ID cannot be empty".to_string()));
+        return Err(AppErr::BadRequest("parcel id is required".to_string()));
     }
 
+    // TODO: verify against on-chain data via blockchain_service
     Ok(Json(VerifyParcelResponse {
-        valid: true,
+        valid: false,
         parcel_id: id,
-        message: "Parcel verification is currently using placeholder data".to_string(),
+        message: "Verification not implemented yet".to_string(),
     }))
 }
 
@@ -40,22 +40,14 @@ async fn parcel_history(
         return Err(AppErr::BadRequest("parcel id is required".to_string()));
     }
 
-    let transfers = vec![
-        TransferRecord {
-            from: "0x1111111111111111111111111111111111111111".to_string(),
-            to: "0x2222222222222222222222222222222222222222".to_string(),
-            timestamp: Utc::now().to_rfc3339(),
-        },
-        TransferRecord {
-            from: "0x2222222222222222222222222222222222222222".to_string(),
-            to: "0x3333333333333333333333333333333333333333".to_string(),
-            timestamp: Utc::now().to_rfc3339(),
-        },
-    ];
-
+    // TODO: fetch transfer events from blockchain_service
     Ok(Json(RegistryHistoryResponse {
         parcel_id: id,
-        transfer_records: transfers,
-        message: "Parcel history is currently using placeholder data".to_string(),
+        transfers: vec![TransferRecord {
+            from: "0x0000000000000000000000000000000000000000".to_string(),
+            to: "0x0000000000000000000000000000000000000000".to_string(),
+            timestamp: chrono::Utc::now().to_rfc3339(),
+        }],
+        message: "History not implemented yet".to_string(),
     }))
 }

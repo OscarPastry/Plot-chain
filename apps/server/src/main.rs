@@ -14,6 +14,7 @@ mod models;
 mod routes;
 //routes → defines the different API endpoints and their corresponding request handlers, organizing the server's functionality into modular components
 //
+mod db;
 //use axum::{Json, Router, extract::State, routing::get};
 //Router → defines routes/endpoints
 //routing::get → specifies a GET request handler
@@ -42,11 +43,12 @@ use crate::config::Config;
 //2.allows main to be async
 async fn main() -> anyhow::Result<()> {
     tracing_subscriber::registry()
-        .with(tracing_subscriber::EnvFilter::new("info, tower_http=info"))
+        .with(tracing_subscriber::EnvFilter::new("info,tower_http=info"))
         .with(tracing_subscriber::fmt::layer()) // Pretty-prints logs to terminal
         .init();
     let config = Config::from_env()?;
-    let app_state = AppState::new(config.clone());
+    let db = db::connect_db(&config.database_url).await?;
+    let app_state = AppState::new(config.clone(), db);
     let app = routes::create_router() // Creates a new Axum router
         .layer(CorsLayer::permissive()) // Allows request from any origin
         .layer(TraceLayer::new_for_http())

@@ -20,6 +20,6 @@ pub struct TransferRecord {
 #[serde(rename_all = "camelCase")]
 pub struct RegistryHistoryResponse {
     pub parcel_id: String,
-    pub transfer_records: Vec<TransferRecord>,
+    pub transfers: Vec<TransferRecord>,
     pub message: String,
 }
