@@ -45,4 +45,7 @@ apps/server/.env.local
 apps/server/cargo.lock
 
 
-/apps/graphify-out
+.agents/
+.claude/
+.opencode/
+graphify-out/
